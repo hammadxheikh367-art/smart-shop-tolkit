@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Shop Toolkit</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:#102b27;color:white;padding:25px 8%;font-size:24px;font-weight:bold}
+main{max-width:800px;margin:45px auto;padding:20px}
+.card{background:white;padding:28px;border-radius:16px;box-shadow:0 5px 25px #0001}
+h1{font-size:30px}
+input{width:100%;padding:14px;margin:8px 0 18px;border:1px solid #ddd;border-radius:8px;font-size:16px}
+button{background:#087e63;color:white;border:0;padding:14px 22px;border-radius:8px;font-size:16px;cursor:pointer}
+.result{margin-top:20px;padding:18px;background:#e8f7f1;border-radius:10px;display:none}
+footer{text-align:center;padding:30px;color:#777}
+</style>
+</head>
+<body>
+<header>Smart Shop Toolkit</header>
+<main>
+<div class="card">
+<h1>Profit Calculator</h1>
+<p>Calculate your product selling price and expected profit.</p>
+<label>Product Cost</label>
+<input id="cost" type="number" placeholder="Enter product cost">
+<label>Other Expenses</label>
+<input id="expense" type="number" placeholder="Enter expenses">
+<label>Profit Markup (%)</label>
+<input id="markup" type="number" placeholder="Enter markup percentage">
+<button onclick="calculate()">Calculate Profit</button>
+<div class="result" id="result"></div>
+</div>
+</main>
+<footer>© 2026 Smart Shop Toolkit</footer>
+<script>
+function calculate(){
+const cost=Number(document.getElementById('cost').value);
+const expense=Number(document.getElementById('expense').value);
+const markup=Number(document.getElementById('markup').value);
+if(cost<=0 || expense<0 || markup<0 || !document.getElementById('cost').value){
+alert('Please enter valid values');
+return;
+}
+const total=cost+expense;
+const profit=total*markup/100;
+const selling=total+profit;
+const box=document.getElementById('result');
+box.style.display='block';
+box.innerHTML='<b>Total Cost:</b> '+total.toFixed(2)+'<br><b>Selling Price:</b> '+selling.toFixed(2)+'<br><b>Expected Profit:</b> '+profit.toFixed(2);
+}
+</script>
+</body>
+</html>
+
